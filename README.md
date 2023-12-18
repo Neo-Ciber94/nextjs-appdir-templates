@@ -4,4 +4,8 @@ A collection of templates for nextjs app directory.
 
 ## Usage
 
-Currently this is expected to be used with `git clone`.
+For downloading templates you need to install the npm package [degit](https://www.npmjs.com/package/degit).
+
+```bash
+npm install -g degit
+```
