@@ -10,6 +10,18 @@ Download this template with:
  degit Neo-Ciber94/nextjs-appdir-templates/templates/drizzle-mysql-lucia-auth
 ```
 
+Install the packages
+
+```bash
+pnpm install
+```
+
+You may need to update the packages:
+
+```bash
+pnpm upgrade
+```
+
 Create a `.env` file using the `.env.sample` and set the environment variables:
 
 ```bash
