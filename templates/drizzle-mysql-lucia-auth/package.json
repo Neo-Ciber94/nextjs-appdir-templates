@@ -1,0 +1,38 @@
+{
+  "name": "drizzle-mysql-lucia-auth",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "db:generate": "drizzle-kit generate:mysql",
+    "db:push": "drizzle-kit push:mysql",
+    "db:migrate": "tsx ./migrate.ts",
+    "db:ui": "drizzle-kit studio"
+  },
+  "dependencies": {
+    "@lucia-auth/adapter-mysql": "^2.1.0",
+    "@lucia-auth/oauth": "^3.5.0",
+    "@planetscale/database": "^1.13.0",
+    "drizzle-orm": "^0.29.1",
+    "mysql2": "^3.6.5",
+    "next": "14.0.4",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/node": "^20",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "autoprefixer": "^10.0.1",
+    "drizzle-kit": "^0.20.6",
+    "eslint": "^8",
+    "eslint-config-next": "14.0.4",
+    "postcss": "^8",
+    "tailwindcss": "^3.3.0",
+    "tsx": "^4.6.2",
+    "typescript": "^5"
+  }
+}
