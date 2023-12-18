@@ -17,9 +17,8 @@ export default async function HomePage() {
             <Image
               src={session.user.imageUrl}
               alt={session.user.username}
-              layout="fill"
-              objectFit="cover"
-              className="rounded-full"
+              fill
+              className="rounded-full object-cover"
             />
           </div>
           <h1 className="text-xl font-bold">Hello</h1>
