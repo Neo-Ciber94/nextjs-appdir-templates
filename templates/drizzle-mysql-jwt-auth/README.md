@@ -1,1 +1,1 @@
-# NextJS - Drizzle + Mysql + Jwt Auth
+# NextJS - Drizzle + Mysql + JWT Auth

@@ -4,19 +4,29 @@ import bcrypt from "bcrypt";
 import { user, userAccount, userSession } from "../db/schema";
 import { and, eq, isNull, not, sql } from "drizzle-orm";
 import { SignJWT, jwtVerify } from "jose";
+import { AppError } from "@/lib/common/error";
 
 const SESSION_DURATION = 1000 * 60 * 60 * 24; // 24 hours
 
 const createUserSchema = z.object({
-  username: z.string().min(3),
+  username: z.string().min(3, "Username too short"),
   email: z.string().email(),
-  password: z.string().min(6),
+  password: z.string().min(6, "Password too short"),
 });
 
 export type CreateUserInput = z.infer<typeof createUserSchema>;
 
 export async function createUser(input: CreateUserInput) {
   const { email, password, username } = createUserSchema.parse(input);
+
+  const existingAccount = await db.query.userAccount.findFirst({
+    where: eq(userAccount.email, email),
+  });
+
+  if (existingAccount) {
+    throw new AppError("Email already exists");
+  }
+
   const passwordHash = await bcrypt.hash(password, 10);
 
   const { userId } = await db.transaction(async (tx) => {
@@ -62,11 +72,11 @@ export async function loginUser(input: LoginUserInput) {
   });
 
   if (resultUserAccount == null) {
-    throw new Error("Invalid email or password");
+    throw new AppError("Invalid email or password");
   }
 
   if (!(await bcrypt.compare(password, resultUserAccount.passwordHash))) {
-    throw new Error("Invalid email or password");
+    throw new AppError("Invalid email or password");
   }
 
   const { sessionExpiration, sessionToken } = await createSession(
