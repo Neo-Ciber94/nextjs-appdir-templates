@@ -48,7 +48,6 @@ export async function register(
       return { error: err.message };
     }
 
-    
     console.error(err);
     return { error: "Something went wrong" };
   }
@@ -73,10 +72,15 @@ export async function login(
       throw err;
     }
 
+    if (err instanceof ZodError) {
+      const error = err.issues[0]?.message || "Failed to login";
+      return { error };
+    }
+
     if (err instanceof AppError) {
       return { error: err.message };
     }
-    
+
     console.error(err);
     return { error: "Something went wrong" };
   }
