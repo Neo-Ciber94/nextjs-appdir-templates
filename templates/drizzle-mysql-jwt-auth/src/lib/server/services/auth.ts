@@ -6,7 +6,7 @@ import { and, eq, isNull, not, sql } from "drizzle-orm";
 import { SignJWT, jwtVerify } from "jose";
 import { AppError } from "@/lib/common/error";
 
-const SESSION_DURATION = 1000 * 60 * 60 * 24; // 24 hours
+const SESSION_DURATION = 1000 * 60 * 1; // 24 hours
 
 const createUserSchema = z.object({
   username: z.string().min(3, "Username too short"),

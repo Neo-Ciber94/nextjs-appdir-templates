@@ -3,6 +3,7 @@
 import { register } from "@/lib/server/actions/auth.actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
+import SubmitButton from "../_components/SubmitButton";
 
 export default function RegisterForm() {
   const [state, formAction] = useFormState(register, null);
@@ -62,12 +63,9 @@ export default function RegisterForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full block text-center"
-      >
+      <SubmitButton className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full block text-center">
         Register
-      </button>
+      </SubmitButton>
 
       {state && (
         <div className="py-4 text-red-500 rounded-lg font-semibold italic">

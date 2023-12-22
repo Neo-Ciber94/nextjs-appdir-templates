@@ -3,6 +3,7 @@
 import { login } from "@/lib/server/actions/auth.actions";
 import Link from "next/link";
 import { useFormState } from "react-dom";
+import SubmitButton from "../_components/SubmitButton";
 
 export default function LoginForm() {
   const [state, formAction] = useFormState(login, null);
@@ -46,12 +47,9 @@ export default function LoginForm() {
         />
       </div>
 
-      <button
-        type="submit"
-        className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full block text-center"
-      >
+      <SubmitButton className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full block text-center">
         Login
-      </button>
+      </SubmitButton>
 
       {state && (
         <div className="py-4 text-red-500 rounded-lg font-semibold italic">
